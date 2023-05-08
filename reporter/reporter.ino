@@ -144,7 +144,6 @@ void loop() {
     int n = WiFi.scanNetworks(false, true);
     if (n == 0) {
       Serial.println("No networks found");
-      Serial.println("No networks found");
     } else {
       for (int8_t i = 0; i < n; i++) {
         if (seen_mac(WiFi.BSSID(i))) {
@@ -173,7 +172,7 @@ void loop() {
         myData.channel = WiFi.channel(i);
         myData.rssi = WiFi.RSSI(i);
         myData.boardID = 14; //YOU NEED TO CHANGE THE BOARDID TO BE UNIQUE FOR EVERY SUB BVEFORE YOU FLASH IT. 
-        Serial.println(myData.boardID);
+        // Serial.println(myData.boardID);
         save_mac(WiFi.BSSID(i));
         esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
         digitalWrite(2, LOW);
