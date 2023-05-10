@@ -93,16 +93,18 @@ void boot_config(){
 
 // Callback function executed when data is received
 void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
-  memcpy(&myData, incomingData, sizeof(myData));
-  memcpy(&myData, incomingData, sizeof(myData));
-  Serial.print("Bytes received: ");
-  Serial.println(len);
-  Serial.print("Mac: ");
-  Serial.println(myData.bssid);
-  Serial.print("SSID: ");
-  Serial.println(myData.ssid);
-  String SSIDString = myData.ssid;
-  SSIDString.replace(",", ".");  //commas in ssid braks the csv
+  if ( len == sizeof(myData))
+  {
+    memcpy(&myData, incomingData, sizeof(myData));
+    Serial.print("Bytes received: ");
+    Serial.println(len);
+    Serial.print("Mac: ");
+    Serial.println(myData.bssid);
+    Serial.print("SSID: ");
+    Serial.println(myData.ssid);
+    String SSIDString = myData.ssid;
+    SSIDString.replace(",", ".");  //commas in ssid braks the csv
+  }
 }
 
 void clear_display(){

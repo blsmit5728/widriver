@@ -9,7 +9,7 @@
 #include <WiFi.h>
 #include <esp_now.h>
 
-uint8_t broadcastAddress[] = {0x40, 0x22, 0xD8, 0x7B, 0x34, 0x48};
+uint8_t broadcastAddress[] = {0xA0, 0xB7, 0x65, 0x4A, 0x9A, 0x1C};
 
 //say how many macs we should keep in the buffer to compare for uniqueness
 #define mac_history_len 512
